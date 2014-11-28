@@ -16,5 +16,10 @@ class windows_autoupdate::params {
   $useWUServer = '0'
   $rescheduleWaitTime = '10'
   $noAutoRebootWithLoggedOnUsers = '0'
-  $p_reg_key = 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
+  if $::architecture == "x64" {
+    $p_reg_key = '32:HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
+  }
+  else {
+      $p_reg_key = 'HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU'
+  }
 }
